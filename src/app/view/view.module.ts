@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { ViewRoutingModule } from './view-routing.module';
 import { ViewComponent } from './view/view.component';
 import { SharedModule } from '../shared/shared.module';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [ViewComponent],
+  declarations: [ViewComponent, LayoutComponent],
   imports: [
     CommonModule,
     ViewRoutingModule,
