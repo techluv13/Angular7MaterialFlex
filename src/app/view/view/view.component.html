@@ -1,4 +1,13 @@
-<button mat-raised-button color="warn" routerLink="/landing">Home</button>
-<div>
+<nav mat-tab-nav-bar style="width: 100%;">
+  <a mat-tab-link *ngFor="let link of viewLinks"
+    [routerLink]="link.link"
+    (click)="activeLink = link.link"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="activeLink == link.link">
+  {{link.name}}
+  </a>
+</nav>
+<div style="width: 100%; height: 80%">
   <router-outlet></router-outlet>
 </div>
