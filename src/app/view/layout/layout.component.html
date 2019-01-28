@@ -1,4 +1,8 @@
 <div fxLayoutAlign="center center" style="width: 100%;">
   <button (click)="addObject()" mat-raised-button color="primary">Add</button>
+  <button (click)="toggleChild()" mat-raised-button color="primary">Add</button>
+</div>
+<div>
+  <app-dynamic-host [dynamicComponent]="childComponent"></app-dynamic-host>
 </div>
 <div #rendererContainer style="height: 90%; width: 100%;"></div>

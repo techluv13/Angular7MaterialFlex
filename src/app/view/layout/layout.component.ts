@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone, AfterViewInit } from '@angular/core';
 import * as THREE from 'three';
+import { ChildOneComponent } from '../child-one/child-one.component';
+import { ChildTwoComponent } from '../child-two/child-two.component';
 var OrbitControls = require('three-orbit-controls')(THREE);
 
 @Component({
@@ -15,6 +17,8 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   private controls: THREE.OrbitControls;
   private orthographicCamera: THREE.OrthographicCamera;
   private ngZone: NgZone;
+  private activeChild = 1;
+  childComponent = ChildOneComponent;
 
   constructor() {
     this.ngZone = new NgZone({});
@@ -26,7 +30,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    debugger;
     this.setScene();
     this.setCamera();
     this.setControls();
@@ -34,6 +37,16 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     this.addFloor();
     this.addObject();
     this.setLight();
+  }
+
+  toggleChild() {
+    if (this.activeChild === 1) {
+      this.childComponent = ChildTwoComponent;
+      this.activeChild = 2;
+    } else {
+      this.childComponent = ChildOneComponent;
+      this.activeChild = 1; 
+    }
   }
 
   private onWindowResize() {
